@@ -1,6 +1,5 @@
 const router = require('koa-router')()
-const { createToken, checkToken } = require('../utils/token')
-const { register } = require('../controller/user')
+const { register, login } = require('../controller/user')
 const { genValidator } = require('../middleware/validator')
 const userValidate = require('../validator/user')
 
@@ -13,7 +12,7 @@ router.post('/register', genValidator(userValidate), async (ctx, next) => {
 
 router.post('/login', async (ctx, next) => {
     const { userName, password } = ctx.request.body;
-    
+    ctx.body = await login(ctx, userName, password)
 })
 
 

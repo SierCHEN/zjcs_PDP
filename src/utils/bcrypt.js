@@ -27,9 +27,10 @@ const encrypt = password => {
  * @param {String} _password - 需要校验的密码
  * @param {String} hash - 加密后的密码
  */
-const comparePassword = (_password, hash) => {
+const comparePassword = (password, hash) => {
+    console.log(password,hash)
     return new Promise((resolve, reject) => {
-        bcrypt.compare(_password, hash, function (err, isMatch) {
+        bcrypt.compare(password, hash, function (err, isMatch) {
             if (err) reject(err)
             else resolve(isMatch)
         })

@@ -1,11 +1,8 @@
 class BaseModel {
-    constructor({errno, data, message}) {
+    constructor({ errno, data }) {
         this.errno = errno
         if (data) {
             this.data = data
-        }
-        if (message) {
-            this.message = message
         }
     }
 }
@@ -20,10 +17,10 @@ class SuccessModel extends BaseModel {
 }
 
 class ErrorModel extends BaseModel {
-    constructor({ errno, message }) {
+    constructor({ errno, data = {} }) {
         super({
             errno,
-            message
+            data
         })
     }
 }

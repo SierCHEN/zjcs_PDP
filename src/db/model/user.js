@@ -1,7 +1,12 @@
 const Sequelize = require('../seq')
-const { STRING } = require('../types')
+const { STRING, INTEGER } = require('../types')
 
 const User = Sequelize.define('user', {
+    role: {
+        type: INTEGER,
+        allowNull: false,
+        comment: '1表示admin，2表示普通用户'
+    },
     userName: {
         type: STRING,
         allowNull: false,
@@ -25,6 +30,11 @@ const User = Sequelize.define('user', {
     picture: {
         type: STRING,
         comment: '头像，图片地址'
+    },
+    state: {
+        type: INTEGER,
+        allowNull: false,
+        comment: '0表示该用户及其信息已被删除，1表示该用户未被删除'
     },
 })
 

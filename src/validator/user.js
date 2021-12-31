@@ -17,7 +17,7 @@ const SCHEMA = {
         },
         newPassword: {
             type: 'string',
-            pattern: '^.*(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])', 
+            pattern: '^.*(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])',
             maxLength: 255,
             minLength: 6
         },

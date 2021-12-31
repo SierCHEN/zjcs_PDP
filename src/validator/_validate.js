@@ -1,6 +1,7 @@
 const Ajv = require('ajv')
-const addFormats = require('ajv-formats')
 const ajv = new Ajv()
+//unknown format "email" ignored in schema at path "#/properties/userName" 解决办法
+const addFormats = require('ajv-formats')
 addFormats(ajv)
 
 /**
