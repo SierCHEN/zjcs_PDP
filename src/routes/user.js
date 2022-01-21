@@ -1,6 +1,8 @@
 const router = require('koa-router')()
+const koaForm = require("formidable-upload-koa")
 const { register, login } = require('../controller/user')
 const { genValidator } = require('../middleware/validator')
+const { loginCheck } = require('../middleware/loginCheck')
 const userValidate = require('../validator/user')
 
 router.prefix('/api/users')
@@ -15,32 +17,10 @@ router.post('/login', async (ctx, next) => {
     ctx.body = await login(ctx, userName, password)
 })
 
-
-// router.post('/login', async (ctx, next) => {
-//   const { username, password } = ctx.request.body
-
-//   let userInfo
-//   if(username === 'admin' && password === '123'){
-//     userInfo = {
-//       userId: 1,
-//       username: 'admin',
-//     }
-//   }
-
-//   if(userInfo === null){
-//     ctx.body = {
-//       errno: -1,
-//       msg: '登陆失败'
-//     }
-//     return
-//   }
-
-//   let token = createToken(userInfo)
-//   ctx.body = {
-//     errno: 0,
-//     token: token
-//   }
-// })
-
+//修改头像
+router.post('/avatar', loginCheck, koaForm(), async (ctx, next) => {
+    const file = ctx.req.files['file']
+    const { size, path, name, type } = file
+})
 
 module.exports = router

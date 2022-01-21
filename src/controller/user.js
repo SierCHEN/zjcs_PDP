@@ -47,12 +47,13 @@ async function login(ctx, userName, password) {
         if (!userInfo.isMatch) {
             return new ErrorModel(ErrorInfo.loginFailInfo)
         } else {
-            const { userName, id, role } = userInfo;
+            const { userName, id, role, phone } = userInfo;
             const token = createToken({ userName, id, role }) // 生成 token
-            ctx.body = { userName, id, role, token }
+            ctx.body = { userName, id, role, phone, token }
             return new SuccessModel({
                 userName: userName,
                 role: role,
+                phone: phone,
                 token: token
             })
         }

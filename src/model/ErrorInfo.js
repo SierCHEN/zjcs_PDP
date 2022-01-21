@@ -83,6 +83,13 @@ const ErrorInfo = {
             message: '取消关注失败'
         }
     },
+    // 权限验证失败
+    authCheckFailInfo: {
+        errno: 10013,
+        data: {
+            message: '您的权限不够，无法进行该操作'
+        }
+    },
     // 创建微博失败
     createBlogFailInfo: {
         errno: 11001,
